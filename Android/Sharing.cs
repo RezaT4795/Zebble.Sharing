@@ -1,10 +1,10 @@
 ﻿namespace Zebble.Device
 {
+    using Android.App;
+    using Android.Content;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Android.App;
-    using Android.Content;
 
     public partial class Sharing
     {

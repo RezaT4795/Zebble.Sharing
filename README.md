@@ -5,12 +5,12 @@
 
 ![logo]
 
-A Zebble plugin for sharing in Zebble application.
+A plugin for using native sharing functionality in Zebble application.
 
 
 [![NuGet](https://img.shields.io/nuget/v/Zebble.Sharing.svg?label=NuGet)](https://www.nuget.org/packages/Zebble.Sharing/)
 
-> This plugin make you able to set clipboard and share somthing in an easy way on Android, IOS, and UWP platforms in Zebble Apps.
+> This plugin make you able to set clipboard and share something in an easy way on Android, iOS, and UWP platforms in Zebble Apps.
 
 <br>
 
@@ -43,8 +43,9 @@ await Device.Sharing.SetClipboard("some text");
 Android allows you to specify a label for the clipboard as well. If you want to use that feature then you can use the following overload:
 ```csharp
 await Device.Sharing.SetClipboard("some text", "android specific label");
-```
+
 // Note: the label will be ignored in iOS and Windows platforms.
+```
 <br>
 
 ### Methods

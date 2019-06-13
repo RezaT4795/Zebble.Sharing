@@ -15,10 +15,9 @@ namespace Zebble.Device
         {
             public static void Tweet(string text)
             {
-
                 Thread.UI.Run(() =>
                 {
-                    if (SLComposeViewController.IsAvailable(SLServiceType.Twitter))
+                    if (UIApplication.SharedApplication.CanOpenUrl(NSUrl.FromString("twitter://")))
                     {
                         var twitter = SLComposeViewController.FromService(SLServiceType.Twitter);
                         twitter.SetInitialText(text);
@@ -26,7 +25,7 @@ namespace Zebble.Device
                     }
                     else
                     {
-                        OS.OpenBrowser($"https://twitter.com/intent/tweet?text={text}");
+                        UIApplication.SharedApplication.OpenUrl(NSUrl.FromString($"https://twitter.com/intent/tweet?text={text}"));
                     }
                 });
             }
@@ -34,7 +33,7 @@ namespace Zebble.Device
             {
                 Thread.UI.Run(() =>
                 {
-                    if (SLComposeViewController.IsAvailable(SLServiceType.Twitter))
+                    if (UIApplication.SharedApplication.CanOpenUrl(NSUrl.FromString("twitter://")))
                     {
                         var twitter = SLComposeViewController.FromService(SLServiceType.Twitter);
                         twitter.SetInitialText(text);
@@ -52,7 +51,7 @@ namespace Zebble.Device
             {
                 Thread.UI.Run(() =>
                 {
-                    if (SLComposeViewController.IsAvailable(SLServiceType.Twitter))
+                    if (UIApplication.SharedApplication.CanOpenUrl(NSUrl.FromString("twitter://")))
                     {
                         var twitter = SLComposeViewController.FromService(SLServiceType.Twitter);
                         twitter.SetInitialText(text);
@@ -61,7 +60,7 @@ namespace Zebble.Device
                     }
                     else
                     {
-                        OS.OpenBrowser($"https://twitter.com/intent/tweet?text={text}&url={url}");
+                        UIApplication.SharedApplication.OpenUrl(NSUrl.FromString($"https://twitter.com/intent/tweet?text={text}&url={url}"));
                     }
                 });
             }

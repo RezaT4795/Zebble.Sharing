@@ -17,7 +17,7 @@ namespace Zebble.Device
         {
             public static void SharePhotosOnFacebook(IEnumerable<byte[]> photos, string hashtag = null)
             {
-                if (SLComposeViewController.IsAvailable(SLServiceType.Facebook))
+                Thread.UI.Post(() =>
                 {
                     var content = new SharePhotoContent();
                     var sharedPhotos = new List<SharePhoto>();
@@ -35,11 +35,7 @@ namespace Zebble.Device
                     };
                     dialog.SetShareContent(content);
                     dialog.Show();
-                }
-                else
-                {
-                    throw new Exception("Facebook is not installed on you device");
-                }
+                });
             }
             public static void SharePhotoOnFacebook(byte[] photo, string hashtag = null)
             {
@@ -48,7 +44,7 @@ namespace Zebble.Device
 
             public static void ShareVideoOnFacebook(string videoUrl, byte[] previewImage = null, string hashtag = null)
             {
-                if (SLComposeViewController.IsAvailable(SLServiceType.Facebook))
+                Thread.UI.Post(() =>
                 {
                     var content = new ShareVideoContent();
                     content.PreviewPhoto = SharePhoto.From(UIImage.LoadFromData(NSData.FromArray(previewImage)), true);
@@ -62,19 +58,16 @@ namespace Zebble.Device
                     };
                     dialog.SetShareContent(content);
                     dialog.Show();
-                }
-                else
-                {
-                    throw new Exception("Facebook is not installed on you device");
-                }
+                });
             }
 
-            public static void ShareLinkOnFacebook(string url)
+            public static void ShareLinkOnFacebook(string quote, string url)
             {
-                if (SLComposeViewController.IsAvailable(SLServiceType.Facebook))
+                Thread.UI.Post(() =>
                 {
                     var content = new ShareLinkContent();
                     content.SetContentUrl(NSUrl.FromString(url));
+                    content.Quote = quote;
                     var dialog = new ShareDialog
                     {
                         Mode = ShareDialogMode.ShareSheet,
@@ -82,11 +75,7 @@ namespace Zebble.Device
                     };
                     dialog.SetShareContent(content);
                     dialog.Show();
-                }
-                else
-                {
-                    throw new Exception("Facebook is not installed on you device");
-                }
+                });
             }
         }
     }

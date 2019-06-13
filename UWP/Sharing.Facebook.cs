@@ -26,7 +26,7 @@ namespace Zebble.Device
                 throw new NotImplementedException();
             }
             //TODO
-            public static bool ShareLinkOnFacebook(string url)
+            public static bool ShareLinkOnFacebook(string quote, string url)
             {
                 throw new NotImplementedException();
             }

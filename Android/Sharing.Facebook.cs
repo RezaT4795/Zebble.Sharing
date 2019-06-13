@@ -34,10 +34,11 @@ namespace Zebble.Device
                 ShareDialog.Show(UIRuntime.CurrentActivity, content.Build());
             }
 
-            public static void ShareLinkOnFacebook(string url)
+            public static void ShareLinkOnFacebook(string quote, string url)
             {
                 var content = new ShareLinkContent.Builder();
                 content.SetContentUrl(Android.Net.Uri.Parse(url));
+                content.SetQuote(quote);
                 ShareDialog.Show(UIRuntime.CurrentActivity, content.Build());
             }
         }

@@ -64,6 +64,14 @@ namespace Zebble.Device
                     }
                 });
             }
+
+            public static void Retweet(string tweetId)
+            {
+                Thread.UI.Run(() =>
+                {
+                    UIApplication.SharedApplication.OpenUrl(NSUrl.FromString($"https://twitter.com/intent/retweet?tweet_id={tweetId}"));
+                });
+            }
         }
     }
 }

@@ -22,6 +22,10 @@ namespace Zebble.Device
             public static void TweetLink(string text, string url)
             {
             }
+            //TODO
+            public static void Retweet(string tweetId)
+            {
+            }
         }
     }
 }

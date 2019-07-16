@@ -26,6 +26,14 @@ namespace Zebble.Device
                 intent.SetData(Android.Net.Uri.Parse(twitterUrl));
                 UIRuntime.CurrentActivity.StartActivity(intent);
             }
+
+            public static void Retweet(string tweetId)
+            {
+                var retweetUrl = $"https://twitter.com/intent/retweet?tweet_id={tweetId}";
+                var intent = new Intent(Intent.ActionView);
+                intent.SetData(Android.Net.Uri.Parse(retweetUrl));
+                UIRuntime.CurrentActivity.StartActivity(intent);
+            }
         }
     }
 }

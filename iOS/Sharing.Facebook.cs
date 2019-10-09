@@ -46,11 +46,13 @@ namespace Zebble.Device
             {
                 Thread.UI.Post(() =>
                 {
-                    var content = new ShareVideoContent();
-                    content.PreviewPhoto = SharePhoto.From(UIImage.LoadFromData(NSData.FromArray(previewImage)), true);
-                    content.SetContentUrl(NSUrl.FromString(videoUrl));
-                    if (string.IsNullOrEmpty(hashtag))
-                        content.Hashtag = new Hashtag() { StringRepresentation = hashtag };
+                    var video = new ShareVideo(new NSCoder())
+                    {
+                        PreviewPhoto = SharePhoto.From(UIImage.LoadFromData(NSData.FromArray(previewImage)), true),
+                        VideoUrl = NSUrl.FromString(videoUrl)
+                    };
+                    var content = new ShareVideoContent { Video = video };
+                    if (string.IsNullOrEmpty(hashtag)) content.Hashtag = new Hashtag() { StringRepresentation = hashtag };
                     var dialog = new ShareDialog
                     {
                         Mode = ShareDialogMode.ShareSheet,

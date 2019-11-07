@@ -92,6 +92,7 @@
     <Compile Include="ShareItemSource.cs" />
     <Compile Include="Sharing.cs" />
     <Compile Include="Sharing.Twitter.cs" />
+    <Compile Include="Sharing.Whatsapp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Zebble-LicenseAgreement.txt" />

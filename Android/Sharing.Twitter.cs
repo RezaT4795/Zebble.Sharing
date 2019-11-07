@@ -1,5 +1,4 @@
 ﻿using Android.Content;
-using Android.Content.PM;
 using System;
 
 namespace Zebble.Device

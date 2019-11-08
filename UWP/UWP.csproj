@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="Sharing.Facebook.cs" />
     <Compile Include="Sharing.cs" />
+    <Compile Include="Sharing.LinkedIn.cs" />
     <Compile Include="Sharing.Twitter.cs" />
     <Compile Include="Sharing.Whatsapp.cs" />
   </ItemGroup>

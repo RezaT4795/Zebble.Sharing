@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public partial class Sharing
+﻿namespace Zebble.Device
 {
-    public partial class Whatsapp
+    public partial class Sharing
     {
-        //TODO
-        public static void Share(string text)
+        public partial class Whatsapp
         {
+            //TODO
+            public static void Share(string text)
+            {
+            }
         }
     }
 }

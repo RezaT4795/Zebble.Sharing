@@ -130,6 +130,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sharing.LinkedIn.cs" />
     <Compile Include="Sharing.Facebook.cs" />
     <Compile Include="Sharing.cs" />
     <Compile Include="Sharing.Twitter.cs" />

@@ -10,7 +10,7 @@ namespace Zebble.Device
             public static void ShareUrl(string url, string title = "")
             {
                 string linkedInUrl;
-                if (title.HasValue())
+                if (!title.HasValue())
                     linkedInUrl = $"https://www.linkedin.com/shareArticle?mini=true&url={url}";
                 else
                     linkedInUrl = $"https://www.linkedin.com/shareArticle?mini=true&url={url}&title={title}";

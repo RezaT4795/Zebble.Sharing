@@ -4,10 +4,10 @@ namespace Zebble.Device
 {
     public partial class Sharing
     {
-        public partial class LinkedIn
+        public partial class Email
         {
-            // TODO
-            public static void ShareUrl(string url, string title = "")
+            //TODO
+            public static void Share(string subject, string body)
             {
                 throw new NotImplementedException();
             }

@@ -17,6 +17,5 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Sharing.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Sharing.Email.cs" />
   </ItemGroup>
 </Project>

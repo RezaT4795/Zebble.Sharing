@@ -107,9 +107,6 @@
     <Reference Include="Xamarin.Auth, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Auth.1.5.0.3\lib\MonoAndroid10\Xamarin.Auth.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Essentials.1.3.1\lib\monoandroid81\Xamarin.Essentials.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Facebook.Common.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Facebook.Common.Android.5.0.3\lib\monoandroid81\Xamarin.Facebook.Common.Android.dll</HintPath>
     </Reference>
@@ -119,9 +116,6 @@
     <Reference Include="Xamarin.Facebook.Share.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Facebook.Share.Android.5.0.3\lib\monoandroid81\Xamarin.Facebook.Share.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Social, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Social.1.1.8\lib\MonoAndroid10\Xamarin.Social.dll</HintPath>
-    </Reference>
     <Reference Include="Zebble.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Zebble.4.4.185\lib\MonoAndroid10\Zebble.Android.dll</HintPath>
     </Reference>
@@ -130,6 +124,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sharing.Email.cs" />
     <Compile Include="Sharing.LinkedIn.cs" />
     <Compile Include="Sharing.Facebook.cs" />
     <Compile Include="Sharing.cs" />

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Zebble.Device
 {
@@ -13,18 +9,22 @@ namespace Zebble.Device
             //TODO
             public static void Tweet(string text)
             {
+                throw new NotImplementedException();
             }
             //TODO
             public static void TweetPhoto(string text, byte[] photo)
             {
+                throw new NotImplementedException();
             }
             //TODO
             public static void TweetLink(string text, string url)
             {
+                throw new NotImplementedException();
             }
             //TODO
             public static void Retweet(string tweetId)
             {
+                throw new NotImplementedException();
             }
         }
     }

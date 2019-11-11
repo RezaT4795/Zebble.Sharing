@@ -1,4 +1,6 @@
-﻿namespace Zebble.Device
+﻿using System;
+
+namespace Zebble.Device
 {
     public partial class Sharing
     {
@@ -7,6 +9,7 @@
             //TODO
             public static void Share(string text)
             {
+                throw new NotImplementedException();
             }
         }
     }

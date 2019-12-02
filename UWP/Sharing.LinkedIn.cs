@@ -6,10 +6,10 @@ namespace Zebble.Device
     {
         public partial class LinkedIn
         {
-            // TODO
             public static void ShareUrl(string url, string title = "")
             {
-                throw new NotImplementedException();
+                var link = $"https://www.linkedin.com/shareArticle?mini=true&url={url.UrlEncode()}&title=&summary={title.OrEmpty().UrlEncode()}&source=";
+                OS.OpenBrowser(link);
             }
         }
     }

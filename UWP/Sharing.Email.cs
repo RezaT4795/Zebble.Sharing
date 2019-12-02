@@ -6,10 +6,9 @@ namespace Zebble.Device
     {
         public partial class Email
         {
-            //TODO
             public static void Share(string subject, string body)
             {
-                throw new NotImplementedException();
+                OS.OpenBrowser($"mailto:?subject={subject.UrlEncode()}&body={body.UrlEncode()}");
             }
         }
     }

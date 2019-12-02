@@ -20,6 +20,8 @@ namespace Zebble.Device
 
             public static void TweetLink(string text, string url)
             {
+                text = text.OrEmpty().KeepReplacing("  ", " ").Replace(" ", "+");
+
                 var twitterUrl = $"http://www.twitter.com/intent/tweet?url={url}&text={text}";
                 var intent = new Intent(Intent.ActionView);
                 intent.SetData(Android.Net.Uri.Parse(twitterUrl));

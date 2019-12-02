@@ -1,15 +1,12 @@
-﻿using System;
-
-namespace Zebble.Device
+﻿namespace Zebble.Device
 {
     public partial class Sharing
     {
         public partial class Whatsapp
         {
-            //TODO
             public static void Share(string text)
             {
-                throw new NotImplementedException();
+                OS.OpenBrowser("https://web.whatsapp.com/");
             }
         }
     }

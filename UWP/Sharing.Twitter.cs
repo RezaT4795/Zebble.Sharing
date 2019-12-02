@@ -6,25 +6,22 @@ namespace Zebble.Device
     {
         public partial class Twitter
         {
-            //TODO
             public static void Tweet(string text)
             {
-                throw new NotImplementedException();
+                var link = "https://twitter.com/intent/tweet?text=" + text.UrlEncode();
+                OS.OpenBrowser(link);
             }
-            //TODO
+
             public static void TweetPhoto(string text, byte[] photo)
             {
                 throw new NotImplementedException();
             }
-            //TODO
-            public static void TweetLink(string text, string url)
-            {
-                throw new NotImplementedException();
-            }
-            //TODO
+
+            public static void TweetLink(string text, string url) => Tweet(url + text.WithPrefix(" "));
+
             public static void Retweet(string tweetId)
             {
-                throw new NotImplementedException();
+                OS.OpenBrowser("https://twitter.com/intent/retweet?tweet_id=" + tweetId);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using MessageUI;
 using UIKit;
 
 namespace Zebble.Device
@@ -9,12 +10,53 @@ namespace Zebble.Device
         {
             public static void Share(string subject, string body)
             {
-                var emailUrl = $"mailto:?subject={subject}&body={body}";
-
-                Thread.UI.Run(() =>
+                Thread.UI.Run(async () =>
                 {
-                    UIApplication.SharedApplication.OpenUrl(NSUrl.FromString(emailUrl));
+                    if (MFMailComposeViewController.CanSendMail)
+                    {
+                        var controller = new MFMailComposeViewController
+                        {
+                            Delegate = new MailControllerDelegate()
+                        };
+
+                        controller.SetSubject(subject);
+                        controller.SetMessageBody(body, false);
+
+                        (UIRuntime.NativeRootScreen as UIViewController)?.PresentViewController(controller, true, null);
+                    }
+                    else
+                    {
+                        await Alert.Show("Your device does not support sending email message!");
+                    }
                 });
+            }
+
+            public class MailControllerDelegate : MFMailComposeViewControllerDelegate
+            {
+                public override void Finished(MFMailComposeViewController controller, MFMailComposeResult result, NSError error)
+                {
+                    base.Finished(controller, result, error);
+
+                    switch (result)
+                    {
+                        case MFMailComposeResult.Cancelled:
+                            Alert.Toast("Email cancelled");
+                            break;
+                        case MFMailComposeResult.Saved:
+                            Alert.Toast("Email saved");
+                            break;
+                        case MFMailComposeResult.Sent:
+                            Alert.Toast("Email sent");
+                            break;
+                        case MFMailComposeResult.Failed:
+                            Log.Error("A failure occurred while completing the email");
+                            break;
+                        default:
+                            break;
+                    }
+
+                    (UIRuntime.NativeRootScreen as UIViewController)?.DismissViewController(true, null);
+                }
             }
         }
     }

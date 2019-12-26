@@ -6,7 +6,7 @@
         {
             public static void Share(string text)
             {
-                OS.OpenBrowser("https://web.whatsapp.com/");
+                OS.OpenBrowser($"https://web.whatsapp.com/send?text={text}");
             }
         }
     }

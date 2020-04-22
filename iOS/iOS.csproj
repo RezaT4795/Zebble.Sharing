@@ -75,7 +75,7 @@
     </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Zebble.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.4.4.185\lib\Xamarin.iOS10\Zebble.iOS.dll</HintPath>
+      <HintPath>..\packages\Zebble.4.4.332\lib\Xamarin.iOS10\Zebble.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +88,7 @@
     <Compile Include="Sharing.Facebook.cs" />
     <Compile Include="ShareItemSource.cs" />
     <Compile Include="Sharing.cs" />
+    <Compile Include="Sharing.Sms.cs" />
     <Compile Include="Sharing.Twitter.cs" />
     <Compile Include="Sharing.Whatsapp.cs" />
   </ItemGroup>

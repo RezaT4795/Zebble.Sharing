@@ -116,8 +116,8 @@
     <Reference Include="Xamarin.Facebook.Share.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Facebook.Share.Android.5.0.3\lib\monoandroid81\Xamarin.Facebook.Share.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Zebble.Android, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.4.4.332\lib\MonoAndroid10\Zebble.Android.dll</HintPath>
+    <Reference Include="Zebble.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zebble.4.4.185\lib\MonoAndroid10\Zebble.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +129,6 @@
     <Compile Include="Sharing.Facebook.cs" />
     <Compile Include="Sharing.cs" />
     <Compile Include="Sharing.Twitter.cs" />
-    <Compile Include="Sharing.Sms.cs" />
     <Compile Include="Sharing.Whatsapp.cs" />
   </ItemGroup>
   <ItemGroup>

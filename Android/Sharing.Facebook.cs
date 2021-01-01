@@ -1,5 +1,4 @@
 ﻿using Android.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Facebook.Share.Model;
@@ -16,7 +15,7 @@ namespace Zebble.Device
                 var content = new SharePhotoContent.Builder().Build();
                 foreach (var photo in photos)
                 {
-                    content.Photos.Add(new SharePhoto.Builder().SetBitmap(BitmapFactory.DecodeByteArray(photo, 0, photo.Count())).Build());
+                    content.Photos.Add(new SharePhoto.Builder().SetBitmap(BitmapFactory.DecodeByteArray(photo, 0, photo.Length)).Build());
                 }
                 ShareDialog.Show(UIRuntime.CurrentActivity, content);
             }
@@ -29,7 +28,7 @@ namespace Zebble.Device
             public static void ShareVideoOnFacebook(string videoUrl, byte[] previewImage = null, string hashtag = null)
             {
                 var content = new ShareVideoContent.Builder();
-                content.SetPreviewPhoto(new SharePhoto.Builder().SetBitmap(BitmapFactory.DecodeByteArray(previewImage, 0, previewImage.Count())).Build());
+                content.SetPreviewPhoto(new SharePhoto.Builder().SetBitmap(BitmapFactory.DecodeByteArray(previewImage, 0, previewImage.Length)).Build());
                 content.SetVideo(new ShareVideo.Builder().SetLocalUrl(Android.Net.Uri.Parse(videoUrl)).Build());
                 ShareDialog.Show(UIRuntime.CurrentActivity, content.Build());
             }

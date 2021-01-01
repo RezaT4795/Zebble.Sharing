@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using UIKit;
+    using Olive;
 
     public partial class Sharing
     {
@@ -38,7 +39,7 @@
 
         static UIViewController GetVisibleViewController(UIViewController controller = null)
         {
-            controller = controller ?? UIRuntime.Window.RootViewController;
+            controller ??= UIRuntime.Window.RootViewController;
 
             if (controller.PresentedViewController == null)
                 return controller;

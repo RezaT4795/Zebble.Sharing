@@ -7,7 +7,7 @@
     <RootNamespace>Zebble</RootNamespace>
     <PackageId>Zebble.Sharing</PackageId>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <Version>1.1.114</Version>
+    <Version>1.1.115.0</Version>
     <PackOnBuild>true</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <LangVersion>default</LangVersion>
@@ -68,9 +68,9 @@
     <PackageReference Include="Zebble" Version="4.5.423" />
   </ItemGroup>
   <ItemGroup>
-	<Folder Include="Android\" />
-	<Folder Include="iOS\" />
-	<Folder Include="UWP\" />
+    <Folder Include="Android\" />
+    <Folder Include="iOS\" />
+    <Folder Include="UWP\" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
     <PackageReference Include="Xamarin.Facebook.Share.Android">

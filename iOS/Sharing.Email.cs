@@ -50,7 +50,7 @@ namespace Zebble.Device
                             Alert.Toast("Email sent");
                             break;
                         case MFMailComposeResult.Failed:
-                            Log.For(this).Error(null, "A failure occurred while completing the email");
+                            Log.For(this).Error("A failure occurred while completing the email");
                             break;
                         default:
                             break;

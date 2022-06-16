@@ -6,7 +6,7 @@
     <RootNamespace>Zebble</RootNamespace>
     <PackageId>Zebble.Sharing</PackageId>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <Version>1.1.119.0</Version>
+    <Version>1.1.120.0</Version>
     <PackOnBuild>true</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <DefineConstants>$(DefineConstants)</DefineConstants>
@@ -58,6 +58,9 @@
     <Compile Include="iOS\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="iOS\Sharing.Instagram.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="icon.png" />
     <None Remove="README.md" />
@@ -68,8 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Android\" />
-    <Folder Include="iOS\" />
-    <Folder Include="UWP\" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
     <PackageReference Include="Xamarin.Facebook.Share.Android">

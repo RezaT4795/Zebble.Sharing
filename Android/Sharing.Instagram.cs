@@ -7,7 +7,7 @@ namespace Zebble.Device
         public partial class Instagram
         {
             public static void ShareFile(string url, string title)
-                => throw new NotImplementedException();
+                => ShareFileToPackage("com.instagram.android", url, title);
         }
     }
 }

@@ -58,9 +58,6 @@
     <Compile Include="iOS\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="iOS\Sharing.Instagram.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="icon.png" />
     <None Remove="README.md" />
@@ -82,4 +79,7 @@
       <Version>7.1.1</Version>
     </PackageReference>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="update-local-nuget-cache $(TargetDir)" />
+  </Target>
 </Project>

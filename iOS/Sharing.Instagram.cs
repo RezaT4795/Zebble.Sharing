@@ -1,15 +1,8 @@
 ﻿using Foundation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
 using UIKit;
-using Olive;
 
 namespace Zebble.Device
 {
-    
-
     public partial class Sharing
     {
         public partial class Instagram

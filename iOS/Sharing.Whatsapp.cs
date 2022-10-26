@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using System;
 using UIKit;
 
 namespace Zebble.Device
@@ -9,12 +10,8 @@ namespace Zebble.Device
         {
             public static void Share(string text)
             {
-                var whatsappUrl = $"whatsapp://send?text={text}";
-
-                Thread.UI.Run(() =>
-                {
-                    UIApplication.SharedApplication.OpenUrl(NSUrl.FromString(whatsappUrl));
-                });
+                var whatsappUrl = $"whatsapp://send?text={text}".ToNsUrl();
+                Thread.UI.Run(() => UIApplication.SharedApplication.OpenUrl(whatsappUrl));
             }
         }
     }

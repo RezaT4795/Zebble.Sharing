@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using System;
 using UIKit;
 
 namespace Zebble.Device
@@ -10,14 +11,16 @@ namespace Zebble.Device
             public static bool ShareFile(string path, string title)
                 => Thread.UI.Run<bool>(() =>
                 {
-                    var url = NSUrl.FromString("instagram-stories://share");
+                    var url = "instagram-stories://share".ToNsUrl();
 
                     if (!UIApplication.SharedApplication.CanOpenUrl(url)) return false;
 
-                    var items = new[] { new NSDictionary<NSString, NSObject>(
-                        new NSString("com.instagram.sharedSticker.backgroundImage"),
-                        NSData.FromFile(path)
-                    ) };
+                    var items = new[] {
+                        new NSDictionary<NSString, NSObject>(
+                            new NSString("com.instagram.sharedSticker.backgroundImage"),
+                            NSData.FromFile(path)
+                        )
+                    };
                     var options = new UIPasteboardOptions
                     {
                         ExpirationDate = new NSDate().AddSeconds(60)

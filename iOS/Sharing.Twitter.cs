@@ -17,7 +17,7 @@ namespace Zebble.Device
             {
                 Thread.UI.Run(() =>
                 {
-                    if (UIApplication.SharedApplication.CanOpenUrl(NSUrl.FromString("twitter://")))
+                    if (UIApplication.SharedApplication.CanOpenUrl("twitter://".ToNsUrl()))
                     {
                         var twitter = SLComposeViewController.FromService(SLServiceType.Twitter);
                         twitter.SetInitialText(text);
@@ -25,7 +25,8 @@ namespace Zebble.Device
                     }
                     else
                     {
-                        UIApplication.SharedApplication.OpenUrl(NSUrl.FromString($"https://twitter.com/intent/tweet?text={text}"));
+                        var urlToOpen = $"https://twitter.com/intent/tweet?text={text}".ToNsUrl();
+                        UIApplication.SharedApplication.OpenUrl(urlToOpen);
                     }
                 });
             }
@@ -33,7 +34,7 @@ namespace Zebble.Device
             {
                 Thread.UI.Run(() =>
                 {
-                    if (UIApplication.SharedApplication.CanOpenUrl(NSUrl.FromString("twitter://")))
+                    if (UIApplication.SharedApplication.CanOpenUrl("twitter://".ToNsUrl()))
                     {
                         var twitter = SLComposeViewController.FromService(SLServiceType.Twitter);
                         twitter.SetInitialText(text);
@@ -51,26 +52,25 @@ namespace Zebble.Device
             {
                 Thread.UI.Run(() =>
                 {
-                    if (UIApplication.SharedApplication.CanOpenUrl(NSUrl.FromString("twitter://")))
+                    if (UIApplication.SharedApplication.CanOpenUrl("twitter://".ToNsUrl()))
                     {
                         var twitter = SLComposeViewController.FromService(SLServiceType.Twitter);
                         twitter.SetInitialText(text);
-                        twitter.AddUrl(NSUrl.FromString(url));
+                        twitter.AddUrl(url.ToNsUrl());
                         UIRuntime.Window.RootViewController.PresentViewController(twitter, true, null);
                     }
                     else
                     {
-                        UIApplication.SharedApplication.OpenUrl(NSUrl.FromString($"https://twitter.com/intent/tweet?text={text}&url={url}"));
+                        var urlToOpen = $"https://twitter.com/intent/tweet?text={text}&url={url}".ToNsUrl();
+                        UIApplication.SharedApplication.OpenUrl(urlToOpen);
                     }
                 });
             }
 
             public static void Retweet(string tweetId)
             {
-                Thread.UI.Run(() =>
-                {
-                    UIApplication.SharedApplication.OpenUrl(NSUrl.FromString($"https://twitter.com/intent/retweet?tweet_id={tweetId}"));
-                });
+                var url = $"https://twitter.com/intent/retweet?tweet_id={tweetId}".ToNsUrl();
+                Thread.UI.Run(() => UIApplication.SharedApplication.OpenUrl(url));
             }
         }
     }

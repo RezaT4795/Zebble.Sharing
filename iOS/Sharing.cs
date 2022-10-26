@@ -18,7 +18,7 @@
         {
             var items = new List<NSObject>();
             if (message.Text.HasValue()) items.Add(new ShareItemSource(message.Text.ToNs(), message.Title));
-            if (message.Url.HasValue()) items.Add(new ShareItemSource(NSUrl.FromString(message.Url), message.Title));
+            if (message.Url.HasValue()) items.Add(new ShareItemSource(message.Url.ToNsUrl(), message.Title));
 
             var controller = new UIActivityViewController(items.ToArray(), null);
 

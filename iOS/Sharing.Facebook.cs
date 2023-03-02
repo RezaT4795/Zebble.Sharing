@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Foundation;
 using UIKit;
-using Social;
-using System.Threading.Tasks;
 using Facebook.ShareKit;
 
 namespace Zebble.Device
@@ -28,13 +24,12 @@ namespace Zebble.Device
                     content.Photos = sharedPhotos.ToArray();
                     if (!string.IsNullOrEmpty(hashtag))
                         content.Hashtag = new Hashtag() { StringRepresentation = hashtag };
-                    var dialog = new ShareDialog
+                    
+                    new ShareDialog((UIViewController)UIRuntime.NativeRootScreen, content, @delegate: null)
                     {
                         Mode = ShareDialogMode.ShareSheet,
                         FromViewController = (UIViewController)UIRuntime.NativeRootScreen
-                    };
-                    dialog.SetShareContent(content);
-                    dialog.Show();
+                    }.Show();
                 });
             }
             public static void SharePhotoOnFacebook(byte[] photo, string hashtag = null)
@@ -53,13 +48,12 @@ namespace Zebble.Device
                     };
                     var content = new ShareVideoContent { Video = video };
                     if (string.IsNullOrEmpty(hashtag)) content.Hashtag = new Hashtag() { StringRepresentation = hashtag };
-                    var dialog = new ShareDialog
+                    
+                    new ShareDialog((UIViewController)UIRuntime.NativeRootScreen, content, @delegate: null)
                     {
                         Mode = ShareDialogMode.ShareSheet,
                         FromViewController = (UIViewController)UIRuntime.NativeRootScreen
-                    };
-                    dialog.SetShareContent(content);
-                    dialog.Show();
+                    }.Show();
                 });
             }
 
@@ -70,13 +64,12 @@ namespace Zebble.Device
                     var content = new ShareLinkContent();
                     content.SetContentUrl(url.ToNsUrl());
                     content.Quote = quote;
-                    var dialog = new ShareDialog
+                    
+                    new ShareDialog((UIViewController)UIRuntime.NativeRootScreen, content, @delegate: null)
                     {
                         Mode = ShareDialogMode.ShareSheet,
                         FromViewController = (UIViewController)UIRuntime.NativeRootScreen
-                    };
-                    dialog.SetShareContent(content);
-                    dialog.Show();
+                    }.Show();
                 });
             }
         }

@@ -5,6 +5,7 @@
     using Windows.ApplicationModel.DataTransfer;
     using Windows.Foundation;
     using Olive;
+    using Windows.Storage.Streams;
 
     public partial class Sharing
     {
@@ -24,7 +25,7 @@
             return Task.CompletedTask;
         }
 
-        static void ShareTextHandler(DataTransferManager sender, DataRequestedEventArgs eventArgse, ShareMessage message)
+        static async void ShareTextHandler(DataTransferManager sender, DataRequestedEventArgs eventArgse, ShareMessage message)
         {
             var request = eventArgse.Request;
 
@@ -33,6 +34,12 @@
             if (message.Text.HasValue()) request.Data.SetText(message.Text);
 
             if (message.Url.HasValue()) request.Data.SetWebLink(new Uri(message.Url));
+
+            if (message.Image != null)
+            {
+                var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(message.Image.FullName);
+                request.Data.SetBitmap(RandomAccessStreamReference.CreateFromFile(file));
+            }                 
         }
 
         static Task DoSetClipboard(string text, string _)

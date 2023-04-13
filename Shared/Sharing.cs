@@ -1,6 +1,7 @@
 ﻿namespace Zebble.Device
 {
     using System;
+    using System.IO;
     using System.Threading.Tasks;
 
     public static partial class Sharing
@@ -8,14 +9,23 @@
         class ShareMessage
         {
             public string Title, Text, Url;
+            public FileInfo Image;
         }
 
-        public static async Task<bool> Share(string text, string title = null, string url = null, string androidChooserTitle = null,
+        public static Task<bool> Share(FileInfo image) => Share(null, image: image);
+
+        public static async Task<bool> Share(string text,
+            string title = null,
+            string url = null,
+            string androidChooserTitle = null,
+            FileInfo image = null,
              DeviceSharingOption[] iosExclude = null, OnError errorAction = OnError.Alert)
         {
+
+            var msg = new ShareMessage { Title = title, Text = text, Url = url, Image = image };
             try
             {
-                await Thread.UI.Run<Task>(() => DoShare(new ShareMessage { Title = title, Text = text, Url = url }, androidChooserTitle, iosExclude));
+                await Thread.UI.Run<Task>(() => DoShare(msg, androidChooserTitle, iosExclude));
 
                 return true;
             }

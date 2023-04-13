@@ -19,6 +19,7 @@
             var items = new List<NSObject>();
             if (message.Text.HasValue()) items.Add(new ShareItemSource(message.Text.ToNs(), message.Title));
             if (message.Url.HasValue()) items.Add(new ShareItemSource(message.Url.ToNsUrl(), message.Title));
+            if (message.Image != null) items.Add(UIImage.FromFile(message.Image.FullName));
 
             var controller = new UIActivityViewController(items.ToArray(), null);
 

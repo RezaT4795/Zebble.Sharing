@@ -7,6 +7,7 @@
     using Olive;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Context = Android.Content.Context;
 
@@ -19,12 +20,14 @@
             var items = new List<string>();
 
             if (message.Text.HasValue()) items.Add(message.Text);
-
             if (message.Url.HasValue()) items.Add(message.Url);
 
             var intent = new Intent(Intent.ActionSend).SetType("text/plain");
-            intent.PutExtra(Intent.ExtraText, string.Join(Environment.NewLine, items));
+
+            if (items.Any()) intent.PutExtra(Intent.ExtraText, string.Join(Environment.NewLine, items));
             if (message.Title.HasValue()) intent.PutExtra(Intent.ExtraSubject, message.Title);
+
+            if (message.Image != null) intent.PutExtra(Intent.ExtraStream, Android.Net.Uri.FromFile(new File(message.Image.FullName)));
 
             var chooserIntent = Intent.CreateChooser(intent, androidChooserTitle);
             chooserIntent.SetFlags(ActivityFlags.ClearTop).SetFlags(ActivityFlags.NewTask);

@@ -10,34 +10,36 @@
     public partial class Sharing
     {
         static DataTransferManager DataTransferManager;
+        static ShareMessage Message;
 
         public static bool SupportsClipboard() => true;
 
         static Task DoShare(ShareMessage message, string _, DeviceSharingOption[] __)
         {
+            Message = message;
             if (DataTransferManager == null)
             {
                 DataTransferManager = DataTransferManager.GetForCurrentView();
-                DataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>((sender, eventArgse) => ShareTextHandler(sender, eventArgse, message));
+                DataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>((sender, eventArgse) => ShareTextHandler(sender, eventArgse));
             }
 
             DataTransferManager.ShowShareUI();
             return Task.CompletedTask;
         }
 
-        static async void ShareTextHandler(DataTransferManager sender, DataRequestedEventArgs eventArgse, ShareMessage message)
+        static async void ShareTextHandler(DataTransferManager sender, DataRequestedEventArgs eventArgse)
         {
             var request = eventArgse.Request;
 
-            request.Data.Properties.Title = message.Title ?? Windows.ApplicationModel.Package.Current.DisplayName;
+            request.Data.Properties.Title = Message.Title ?? Windows.ApplicationModel.Package.Current.DisplayName;
 
-            if (message.Text.HasValue()) request.Data.SetText(message.Text);
+            if (Message.Text.HasValue()) request.Data.SetText(Message.Text);
 
-            if (message.Url.HasValue()) request.Data.SetWebLink(new Uri(message.Url));
+            if (Message.Url.HasValue()) request.Data.SetWebLink(new Uri(Message.Url));
 
-            if (message.Image != null)
+            if (Message.Image != null)
             {
-                var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(message.Image.FullName);
+                var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(Message.Image.FullName);
                 request.Data.SetBitmap(RandomAccessStreamReference.CreateFromFile(file));
             }                 
         }

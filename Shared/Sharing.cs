@@ -25,8 +25,7 @@
             var msg = new ShareMessage { Title = title, Text = text, Url = url, Image = image };
             try
             {
-                await Thread.UI.Run<Task>(() => DoShare(msg, androidChooserTitle, iosExclude));
-
+                await Thread.UI.Run<Task>(() => DoShare(msg, androidChooserTitle, iosExclude)).ConfigureAwait(false);
                 return true;
             }
             catch (Exception ex)

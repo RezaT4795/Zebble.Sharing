@@ -22,12 +22,21 @@
             if (message.Text.HasValue()) items.Add(message.Text);
             if (message.Url.HasValue()) items.Add(message.Url);
 
-            var intent = new Intent(Intent.ActionSend).SetType("text/plain");
+            var intent = new Intent(Intent.ActionSend);
+            intent.SetType(message.Image is null ? "text/plain" : "image/*");
 
-            if (items.Any()) intent.PutExtra(Intent.ExtraText, string.Join(Environment.NewLine, items));
             if (message.Title.HasValue()) intent.PutExtra(Intent.ExtraSubject, message.Title);
+            if (items.Any()) intent.PutExtra(Intent.ExtraText, items.ToLinesString());
 
-            if (message.Image != null) intent.PutExtra(Intent.ExtraStream, Android.Net.Uri.FromFile(new File(message.Image.FullName)));
+            if (message.Image != null)
+            {
+                var file = new File(message.Image.FullName);
+                var uri = FileProvider.GetUriForFile(UIRuntime.CurrentActivity.ApplicationContext,
+                        UIRuntime.CurrentActivity.PackageName + ".fileprovider", file);
+
+                intent.PutExtra(Intent.ExtraMimeTypes, new[] { "image/jpeg", "image/png" });
+                intent.PutExtra(Intent.ExtraStream, uri);                
+            }
 
             var chooserIntent = Intent.CreateChooser(intent, androidChooserTitle);
             chooserIntent.SetFlags(ActivityFlags.ClearTop).SetFlags(ActivityFlags.NewTask);

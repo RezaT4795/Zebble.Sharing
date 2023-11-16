@@ -27,7 +27,7 @@ namespace Zebble.Device
                     }
                     else
                     {
-                        await Alert.Show("Your device does not support sending email message!");
+                        await Dialogs.Current.Alert("Your device does not support sending email message!");
                     }
                 });
             }
@@ -41,13 +41,13 @@ namespace Zebble.Device
                     switch (result)
                     {
                         case MFMailComposeResult.Cancelled:
-                            Alert.Toast("Email cancelled");
+                            Dialogs.Current.Toast("Email cancelled").GetAwaiter();
                             break;
                         case MFMailComposeResult.Saved:
-                            Alert.Toast("Email saved");
+                            Dialogs.Current.Toast("Email saved").GetAwaiter();
                             break;
                         case MFMailComposeResult.Sent:
-                            Alert.Toast("Email sent");
+                            Dialogs.Current.Toast("Email sent").GetAwaiter();
                             break;
                         case MFMailComposeResult.Failed:
                             Log.For(this).Error("A failure occurred while completing the email");

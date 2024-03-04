@@ -33,6 +33,9 @@ namespace Zebble.Device
             }
 
             public class MailControllerDelegate : MFMailComposeViewControllerDelegate
+#if !XAMARINIOS
+                , IUINavigationControllerDelegate
+#endif
             {
                 public override void Finished(MFMailComposeViewController controller, MFMailComposeResult result, NSError error)
                 {

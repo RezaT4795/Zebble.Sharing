@@ -2,14 +2,13 @@
 {
     using Android.App;
     using Android.Content;
-    using AndroidX.Core.Content;
     using Java.IO;
     using Olive;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Context = Android.Content.Context;
+    using Microsoft.Maui.Storage;
 
     public partial class Sharing
     {
@@ -35,7 +34,7 @@
                         UIRuntime.CurrentActivity.PackageName + ".fileprovider", file);
 
                 intent.PutExtra(Intent.ExtraMimeTypes, new[] { "image/jpeg", "image/png" });
-                intent.PutExtra(Intent.ExtraStream, uri);                
+                intent.PutExtra(Intent.ExtraStream, uri);
             }
 
             var chooserIntent = Intent.CreateChooser(intent, androidChooserTitle);

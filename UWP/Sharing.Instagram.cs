@@ -2,6 +2,7 @@
 
 namespace Zebble.Device
 {
+    using Olive;
     using System.Collections.Generic;
     using Windows.ApplicationModel.DataTransfer;
     using Windows.Foundation;

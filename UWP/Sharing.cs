@@ -1,10 +1,10 @@
 ﻿namespace Zebble.Device
 {
-    using Olive;
     using System;
     using System.Threading.Tasks;
     using Windows.ApplicationModel.DataTransfer;
     using Windows.Foundation;
+    using Olive;
     using Windows.Storage.Streams;
 
     public partial class Sharing
